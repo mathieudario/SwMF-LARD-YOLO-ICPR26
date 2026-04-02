@@ -223,5 +223,5 @@ runs/*
 
 # Keep only some of the results
 results/*/*
-!/results/*/data_analysis
+!/results/*/analysis
 #####################################
