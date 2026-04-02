@@ -1,9 +1,9 @@
-# SwMF for LARD monitoring
+# SwMF (Swiss cheese Monitoring Framework)
 
-This repository presents all the necessary code to reproduce the experiments for the ICPR 2026 paper: **Unifying Runtime Monitoring Approaches for Safety-Critical Machine Learning: Application to Vision-Based Landing**
+This repository presents contains the code to reproduce the experiments mentioned in the ICPR 2026 submitted paper "**Unifying Runtime Monitoring Approaches for Safety-Critical Machine Learning: Application to Vision-Based Landing**". In this project, SwMF is used to monitor a YOLO (You Only Look Once) model performing object detection for a vision-based runway detection task, on the LARD (Landing Approach Runway Detection) dataset.
 
 <div align="center">
-<img src="yolo-pred.jpg" 
+<img src="yolo-pred.jpg"
      alt="Predictions results - YOLOv5 - demo"
      align="center"
      width="40%"/>
@@ -11,7 +11,7 @@ This repository presents all the necessary code to reproduce the experiments for
 
 <div style="text-align: center; width:80%">
 
-*FIGURE: Prediction of a YOLOv5 model on an image from the LARDv1 dataset (test split)*
+*Prediction of a YOLOv5 model on an image from the LARDv1 dataset (test split)*
 </div>
 
 </div>
@@ -32,10 +32,10 @@ This repository presents all the necessary code to reproduce the experiments for
 │   ├── OOD.ipynb                   # Exploration of OOD verification
 │   └── threats-generation.ipynb    # Corrupted data notebook
 ├── results/                    # Results, logs, and figures produced by experiments
-|   ├── lard_512x512                # Original dataset (download + export)
-|   |   └── data_analysis               # ODD and OOD analyses
-|   └── lard_512x512_ICPR2026       # Filtered dataset (original + filter out-of-ODD)
-|       └── data_analysis               # ODD and OOD analyses
+|   ├── lard_512x512_full/          # Original dataset (download + export)
+|   |   └── analysis/                   # ODD and OOD analyses
+|   └── lard_512x512_ICPR2026/      # Filtered dataset (original + filter out-of-ODD)
+|       └── analysis/                   # ODD and OOD analyses
 ├── swmf/                       # SwMF (Swiss cheese Monitoring Framework) core code
 │   ├── models/                     # Model architectures and utils
 │   ├── monitors/                   # Monitoring methods
@@ -58,37 +58,42 @@ This repository presents all the necessary code to reproduce the experiments for
 
 ### Installation (`uv`)
 
-#### 0. Install `uv`.
+#### 0. Install `uv`
 
 First, make sure to have the `uv` package manager installed. You can refer to [this](https://docs.astral.sh/uv/getting-started/installation/#installation-methods) page for details about download or run the commands below.
 
 - On Linux/Mac (recommended):
+
 ```sh
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
+
 - On Windows:
+
 ```powershell
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
+
 - With `pip`:
+
 ```sh
 pip install uv
 ```
 
-#### 1. Create a virtual environment and activate it.
+#### 1. Create a virtual environment and activate it
 
 ```sh
 uv venv (--python 3.10)
 source .venv/bin/activate
 ```
 
-#### 2. Install the dependencies.
+#### 2. Install the dependencies
 
 ```sh
 uv pip install -r pyproject.toml
 ```
 
-#### 3. Verify the installation.
+#### 3. Verify the installation
 
 ```sh
 uv pip list
@@ -105,25 +110,25 @@ The experiment presented in the ICPR 2026 paper can be run in the [`icpr2026_exp
 ### 1. Data preparation
 
 - **Dataset download**.
-    
-    Open and run [`notebooks/data-download.ipynb`](./notebooks/data-download.ipynb) to download the [LARD](https://github.com/deel-ai/LARD/tree/LARD_V1) (v1) dataset. 
-    
+
+    Open and run [`notebooks/data-download.ipynb`](./notebooks/data-download.ipynb) to download the [LARD](https://github.com/deel-ai/LARD/tree/LARD_V1) (v1) dataset.
+
     ***Warning**: the automated download does not work anymore, manually download is necessary (see instructions in the notebook).*
 
-- **Dataset export**. 
-    
+- **Dataset export**.
+
     Open and run [`notebooks/data-export.ipynb`](./notebooks/data-export.ipynb) to export the dataset to the proper format for [YOLO](https://docs.ultralytics.com/fr/models/yolov5/). Also filter data to only keep the images compliant with the ODD.
 
 - **Model training**.
-    
-    Open and run [`notebooks/ml-yolo.ipynb`](./notebooks/ml-yolo.ipynb) to train the YOLO object detection model that will be monitored at runtime. 
+
+    Open and run [`notebooks/ml-yolo.ipynb`](./notebooks/ml-yolo.ipynb) to train the YOLO object detection model that will be monitored at runtime.
 
     *Note that all steps are deterministic, with a fixed random seed set in each notebook where necessary. For different settings, modify the seed inside the notebooks.*
 
 ### 2. Experiment
 
-- **Main experiment**. 
-    
+- **Main experiment**.
+
     Run the [`icpr2026_experiment.ipynb`](./icpr2026_experiment.ipynb) notebook. This notebook integrates data loading from exported datasets, model inference, monitors training and testing, results computation and saving.
 
     *Note that all steps are deterministic, with a fixed random seed set in each notebook where necessary. For different settings, modify the seed inside the notebooks.*
