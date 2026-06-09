@@ -1,6 +1,6 @@
-# SwMF (Swiss cheese Monitoring Framework)
+# SwMF-LARD-YOLO-ICPR26
 
-This repository presents contains the code to reproduce the experiments mentioned in the ICPR 2026 submitted paper "**Unifying Runtime Monitoring Approaches for Safety-Critical Machine Learning: Application to Vision-Based Landing**". In this project, SwMF is used to monitor a YOLO (You Only Look Once) model performing object detection for a vision-based runway detection task, on the LARD (Landing Approach Runway Detection) dataset.
+This repository contains the code to reproduce the experiments of ICPR 2026 paper "**Unifying Runtime Monitoring Approaches for Safety-Critical Machine Learning: Application to Vision-Based Landing**". In this project, SwMF (Swiss cheese Monitoring Framework) is used to monitor a YOLOv5 (You Only Look Once) model performing object detection for a vision-based runway detection task, on the LARD (Landing Approach Runway Detection) dataset.
 
 <div align="center">
 <img src="yolo-pred.jpg"
@@ -51,7 +51,7 @@ This repository presents contains the code to reproduce the experiments mentione
 
 ## Requirements
 
-- `Python 3.10` (recommended)
+- `Python 3.10`
 - `uv` package manager (recommended)
 
 *Note, the project has been developed using the `uv` package manager. Yet, using `pip` or `conda` is also possible.*
@@ -82,9 +82,18 @@ pip install uv
 
 #### 1. Create a virtual environment and activate it
 
+- On Linux/Mac (recommended):
+
 ```sh
 uv venv (--python 3.10)
 source .venv/bin/activate
+```
+
+- On Windows:
+
+```sh
+uv venv (--python 3.10)
+./venv/Scripts/Activate.ps1
 ```
 
 #### 2. Install the dependencies
@@ -105,9 +114,9 @@ Create a virtual environment and install the dependencies using the `requirement
 
 ## Usage
 
-The experiment presented in the ICPR 2026 paper can be run in the [`icpr2026_experiment.ipynb`](./icpr2026_experiment.ipynb) notebook. Follow the steps below to properly setup and run the experiment.
+The experiment results presented in the ICPR paper were obtained with the [`icpr2026_experiment.ipynb`](./icpr2026_experiment.ipynb) notebook. Use the notebook to rerun the experiment on your own, full experiment is contained in this notebook.
 
-### 1. Data preparation
+### 1. Alternative notebooks
 
 - **Dataset download**.
 
@@ -125,7 +134,7 @@ The experiment presented in the ICPR 2026 paper can be run in the [`icpr2026_exp
 
     *Note that all steps are deterministic, with a fixed random seed set in each notebook where necessary. For different settings, modify the seed inside the notebooks.*
 
-### 2. Experiment
+### 2. Experiment notebook
 
 - **Main experiment**.
 

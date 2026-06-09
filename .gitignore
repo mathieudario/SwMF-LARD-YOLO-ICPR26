@@ -210,16 +210,21 @@ __marimo__/
 #####################################
 ############# EDIT HERE #############
 
-# Data : datasets, features, models, monitors
-data/*
-!/data/runways_database*.json
-
-# Yolo : train, valid, test temporary files
+# Remove Ultralytics YOLO runs directory
 runs/*
 
-# Yolo keep original models (.pt)
+# Remove data/ content (experiment specific)
+data/datasets/*
+data/features/*
+data/models/detect/*
+data/monitors/*
+
+# Remove pytorch models excepts the one used in experiment ICPR26
 *.pt
-!/notebooks/yolo*.pt
+!/data/models/detect/*.pt
+
+# Keep runway database
+!/data/runways_database*.json
 
 # Keep only some of the results
 results/*/*
