@@ -56,9 +56,9 @@ This repository contains the code to reproduce the experiments of ICPR 2026 pape
 
 *Note, the project has been developed using the `uv` package manager. Yet, using `pip` or `conda` is also possible.*
 
-### Installation (`uv`)
+## Installation
 
-#### 0. Install `uv`
+### 0. Install `uv`
 
 First, make sure to have the `uv` package manager installed. You can refer to [this](https://docs.astral.sh/uv/getting-started/installation/#installation-methods) page for details about download or run the commands below.
 
@@ -74,41 +74,53 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-- With `pip`:
+- With `pip` (not recommended):
 
 ```sh
 pip install uv
 ```
 
-#### 1. Create a virtual environment and activate it
+### 1. Install Python (3.10) if needed
 
-- On Linux/Mac (recommended):
+```sh
+uv install python 3.10
+```
+
+### 2. Create a virtual environment and activate it
 
 ```sh
 uv venv (--python 3.10)
-source .venv/bin/activate
 ```
 
-- On Windows:
+### 3. Install the dependencies
+
+#### Minimal environment for main experiment (ICPR 2026) + CPU
 
 ```sh
-uv venv (--python 3.10)
-./venv/Scripts/Activate.ps1
+uv sync --extra cpu
 ```
 
-#### 2. Install the dependencies
+#### Minimal environment + GPU
 
 ```sh
-uv pip install -r pyproject.toml
+uv sync --extra cpu
 ```
 
-#### 3. Verify the installation
+#### Full environment + CPU
 
 ```sh
-uv pip list
+uv sync --extra cpu --group full
 ```
 
-### Alternative installation
+#### Full environment + GPU
+
+```sh
+uv sync --extra gpu --group full
+```
+
+Install `torch`, `torchvision`, and `ultralytics` packages specific for CUDA 12.8 GPU.
+
+### Alternative installation (not recommended)
 
 Create a virtual environment and install the dependencies using the `requirements.txt` file and your favourite package manager (pip, poetry, conda...).
 
@@ -152,7 +164,7 @@ This project is licensed under the MIT license. See the [LICENSE](./LICENSE) fil
 
 ## Citation
 
-TODO
+You can read the associated paper at [todo]().
 
 ---
 For any questions, please contact <mathieu.dario@laas.fr>
