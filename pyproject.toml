@@ -5,37 +5,37 @@ description = "Project for ICPR 2026 paper experiment on Monitoring Framework fo
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "h5py",
-    "ipykernel",
-    "kneed",
-    "matplotlib",
-    "numpy",
-    "opencv-python",
-    "pandas",
-    "plotly",
-    "pyproj",
-    "scikit-image",
-    "scikit-learn",
-    "scikit-spatial",
-    "scipy",
-    "tqdm",
+    "h5py>=3.15.1",
+    "ipykernel>=6.30.1",
+    "kneed>=0.8.5",
+    "matplotlib>=3.10.7",
+    "numpy>=2.2.6",
+    "opencv-python>=4.11.0",
+    "pandas>=2.3.3",
+    "pyproj==3.7.1",
+    "scikit-image==0.25.2",
+    "scikit-learn==1.7.2",
+    "scikit-spatial==9.0.1",
+    "scipy>=1.15",
+    "tqdm>=4.67",
 ]
 
 [project.optional-dependencies]
 cpu = [
-    "torch",
-    "torchvision",
-    "ultralytics",
+    "torch>=2.9.0",
+    "torchvision>=0.24.0",
+    "ultralytics==8.3.220",
 ]
 gpu = [
-    "torch",
-    "torchvision",
-    "ultralytics",
+    "torch>=2.9.0",
+    "torchvision>=0.24.0",
+    "ultralytics==8.3.220",
 ]
 
 [dependency-groups]
 full = [
     "ipython",
+    "plotly",
     "onnx",
     "onnxruntime",
     "onnxslim",
