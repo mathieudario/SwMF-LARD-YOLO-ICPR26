@@ -96,6 +96,8 @@ uv venv (--python 3.10)
 
 #### Minimal environment for main experiment (ICPR 2026) + CPU
 
+Useful for running the `icpr2026_experiment.ipynb` notebook, using the CPU for models and monitors inference.
+
 ```sh
 uv sync --extra cpu
 ```
@@ -108,11 +110,15 @@ uv sync --extra cpu
 
 #### Full environment + CPU
 
+Useful for running the notebooks provided at `./notebooks/`, using CPU for YOLO training (slow).
+
 ```sh
 uv sync --extra cpu --group full
 ```
 
 #### Full environment + GPU
+
+Useful for running the notebooks provided at `./notebooks/`, using GPU for YOLO training (slow).
 
 ```sh
 uv sync --extra gpu --group full
